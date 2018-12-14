@@ -49,8 +49,8 @@ print('this is a list of the states', states_list)
 def compare_any50():
     print('Select two states to compare their rates at which alcohol is used among youth. Please use correct capitalization.')
     ## a test code can be written for user that input an invalid state.
-    state_1 = input('Pick one state by name:')
-    state_2 = input('Pick another state by name:')
+    state_1 = input('Pick one state:')
+    state_2 = input('Pick another state:')
     if state_1 in states_list and state_2 in states_list: #added states_list in front of state_1
         value_1 = firstAnalysis_df.loc[state_1,'DataValueAlt']
         value_2 = firstAnalysis_df.loc[state_2, 'DataValueAlt']
