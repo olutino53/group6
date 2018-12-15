@@ -2,16 +2,13 @@
 #_*_ coding:utf-8 _*_
 import pandas as pd
 import matplotlib.pyplot as plt #added plotly function for bar graph
-from matplotlib import style
 import csv
 import sys
-
 
 #Load the CSV file into a dataframe
 project_df = pd.read_csv('U.S._Chronic_Disease_Indicators__CDI_new.csv', low_memory = False)
 
 project_df.dtypes #confirms what each column type is
-
 
 #tells number of rows and columns in the csv file dataframe.
 print('There are',project_df.shape[0], 'Rows','\nAnd', project_df.shape[1], 'Columns' )
@@ -23,7 +20,6 @@ secondConfigure_df = project_df
 #extracts first 52 rows and first 12 columns to shorten the huge csv
 #shows needed rows and columns but also saves the changes made as firstcode_df
 firstAnalysis_df = firstAnalysis_df.iloc[:52,:12]
-
 
 first_df = firstAnalysis_df #set up temporary dataframe to avoid losing any progress here on out
 
@@ -39,7 +35,6 @@ firstAnalysis_df.set_index('LocationDesc',inplace=True)
 states_list=firstAnalysis_df.index.values.tolist() #creats a dictionary of all the states/abbr for later use of order
 for v in states_list:
     print('{0}'.format(v))
-
 #compares rates of alcohol use among youth in any two of the 50 states that the user chooses.
 def compare_any50():
     print('Select two states to compare their rates at which alcohol is used among youth. Please use correct capitalization.')
@@ -118,8 +113,8 @@ male_asthma_df = secondcode_df[secondcode_df.StratificationID1 == 'GENM'] #chang
 
 #this function allows the user to input up to 5 different states of their choosing and compare overall asthma rates of each state
 def compare_any50asthma():
-    print("Compare up to five different states' overall asthma rates for 2015. If less than 5,"
-          " print 'done' when you have entered all the states you wish to investigate. You must enter at least one state.")
+    print("Compare up to five different states' overall asthma rates for 2015. If less than 5,\n"
+          "type 'done' when you have entered all the states you wish to investigate. You must enter at least one state.")
     any_stateslist=[] #list for states that the user chooses, up to 5
     
     while len(any_stateslist) <= 4:
@@ -181,99 +176,38 @@ def compare_genderasthma():
     print('\n')
 #compare_genderasthma()
 
-#class AQI:
 def Aqi():
-    import pandas as pd
     #importing AQI data per state capital - air quality Index(AQI)
     #Load the AQI CSV file into a dataframe
     Asthma_AQI_df = pd.read_csv('AQI per state.csv', low_memory = True)
-
-    #print(Asthma_AQI_df) # #This dataframe contains the AQI (air quality index) of each state capital
-
-    ##[NEEDS UPDATE]
+    #(Asthma_AQI dataframe contains the AQI (air quality index) of each state capital
+    Asthma_AQI_df.columns = Asthma_AQI_df.columns.str.strip()
     #sorts dataframe by alphabetical order of states
-    Asthma_AQI_df = Asthma_AQI_df.sort_values(by= ['State'], axis = 1)
-    #Asthma_AQI_df = Asthma_AQI_df.set_index(['State'])
-
-    #print('this is state',Asthma_AQI_df.dtypes)
-    print('this is state',Asthma_AQI_df)
-
+    Asthma_AQI_df = Asthma_AQI_df.sort_values(by='State')
 
     #there is no Tennessee in overall asthma dataframe so we will remove it from AQI dataframe as well
     Asthma_AQI_df = Asthma_AQI_df.drop(Asthma_AQI_df.index[41])
 
     #sets index to states with object values. The two dataframes will not concatenate properly if the index is left as numbers
-    #Asthma_AQI_df.set_index('State', inplace=True)
+    Asthma_AQI_df.set_index('State', inplace=True)
 
     #combines the overall asthma dataframe and the air quality index dataframe
-    #value_list = Asthma_AQI_df2.index.values.tolist()  # creats a dictionary of all the states/abbr for later use of order
-    combined_asthmaAQI_df = pd.concat([overallasthma_df, Asthma_AQI_df])
+    combined_asthmaAQI_df = pd.concat([overallasthma_df, Asthma_AQI_df], axis=1)
 
-
-    #print(combined_asthmaAQI_df) #displays updated dataframe after modifications
     #scatterplot comparing overall asthma percent rates to air quality indexes for each state, excluding Tennessee
     combined_asthmaAQI_df.plot.scatter(x='DataValueAlt', y='AQI by Capitol')
-    value_1 = Asthma_AQI_df['AQI by Capitol']
-    print(value_1)
-    s = value_1[1]
-    s2 = value_1[0]
-
-    plt.scatter(x= value_1, y = value_1)
-    #plt.show()
-
-    #import pandas as pd #found a new csv with data relating to teen pregnancy rates per state and uploaded it as a new dataframe
-
-    #Load the CSV file into a dataframe
-    #teenbirths displays the overall occurance of pregnancies among teenage girls in 50 different states.
-    #teenpreg_df = pd.read_csv('TEENBIRTHS2015.csv', low_memory = False)
-
-    #teenpreg_df #dataframe of teen pregnancy rates in each state in 2015
-
-    #getting rid of unnecessary URL column
-    #teenpreg_df = teenpreg_df.drop('URL', axis=1) #axis is the rows or columns
-
-    #merged each dataframe together based on column name "LocationAbbr"
-    #Alcohol_TP_df = pd.merge(firstAnalysis_df, teenpreg_df, on='LocationAbbr')
-
-    #Alcohol_TP_df
-
-    #Alcohol_TP_df.plot.scatter(x= 'DataValueAlt', y= 'RATE') # scatter plot with x-axis as Youth Alcohol prevalance and y axis teen pregnancy rate
-
-#print(Aqi())
-
-
-def teen_pregnancy_rates():
-
-    #A new csv with data relating to teen pregnancy rates per state and uploaded it as a new dataframe
-    # Loading the CSV file into a dataframe
-    # teenbirths displays the overall occurance of pregnancies among teenage girls in 50 different states.
-    teenpreg_df = pd.read_csv('TEENBIRTHS2015.csv', low_memory = False)
-    #print(teenpreg_df) #dataframe of teen pregnancy rates in each state in 2015
-
-    #getting rid of unnecessary URL column
-    teenpreg_df = teenpreg_df.drop('URL', axis=1) #axis is the rows or columns
-    print(teenpreg_df)
-    #merged each dataframe together based on column name "LocationAbbr"
-    Alcohol_TP_df = pd.merge(firstAnalysis_df, teenpreg_df, on='LocationAbbr')
-
-    print(Alcohol_TP_df)
-
-    Alcohol_TP_df.plot.scatter(x= 'DataValueAlt', y= 'RATE') # scatter plot with x-axis as Youth Alcohol prevalance and y axis teen pregnancy rate
-
-#print(teen_pregnancy_rates())
-
-
+    plt.title('This Scatter shows the overall \n'
+              'ashthma percentage rates to air quality indexs for all the states')
+    plt.show()
 
 def main():
     compare_any50()
     compare_any50asthma()
     compare_genderasthma()
-    #Aqi()
-    #teen_pregnancy_rates()
-
-
+    Aqi()
 
 if __name__ == '__main__':
     main()
+
 
 
