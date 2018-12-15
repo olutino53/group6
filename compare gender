@@ -61,8 +61,7 @@ masthma_df
 
 def compare_genderasthma():
 
-    print('Select a state to see the male, female, and overall percent prevalence of asthma'
-          'among adults in 2015.\nUse correct capitalization. '
+    print('Select a state to see the male, female, and overall percent prevalence of asthma among adults in 2015.\n Use correct capitalization. '
           'Note: There is no comparison data for Alaska, Kansas, or '
           'Virginia.')
     one_state = []        # list for states that the user chooses
