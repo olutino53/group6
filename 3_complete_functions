@@ -77,7 +77,7 @@ def compare_any50():
         plt.show()
     else:
         print("Please input valid states in the U.S. with correct spelling and capitalization")
-    print('\n'+'\n')
+    print('\n')
 #print(compare_any50())
 
 #for v in states_list:
@@ -136,7 +136,7 @@ def compare_any50asthma():
     print(any_stateslist)
     print("Percent rates of asthma in chosen state(s):")
     for state in any_stateslist:
-        print(state +': '+ str(overallasthma_df.loc[state, 'DataValueAlt']) + '\n'+'\n')
+        print(state +': '+ str(overallasthma_df.loc[state, 'DataValueAlt']))
 
     #make new dataframa to graph states chosen by user
     statedict={}
@@ -147,7 +147,7 @@ def compare_any50asthma():
     plt.bar(range(len(statedict)), list(statedict.values()), align='center')
     plt.xticks(range(len(statedict)), list(statedict.keys()))
     plt.show()
-    print('\n' + '\n')
+    print('\n')
 #compare_any50asthma()
 
 #This code allows user to input one state and get the male, female, and overall asthma prevalence compared side by side in a graph
@@ -177,7 +177,7 @@ def compare_genderasthma():
     plt.bar(range(len(statedict)), list(statedict.values()), align='center') #Begin to use pandas for ploting graph
     plt.xticks(range(len(statedict)), list(statedict.keys()))
     plt.show()
-    print('\n' + '\n')
+    print('\n')
 #compare_genderasthma()
 
 #class AQI:
