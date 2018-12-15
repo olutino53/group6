@@ -14,6 +14,8 @@ def main():
 
 
 class states():
+    def __init__(self, project_df=None):
+        self.project_df = project_df
     def compare_any50(self):
 
         # Load the CSV file into a dataframe
@@ -94,9 +96,6 @@ class states():
             plt.show()
         else:
             print("Please input valid states in the U.S. with correct spelling and capitalization")
-
-# def test():
-#     assert
 
 
 if __name__ == '__main__':
