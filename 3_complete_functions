@@ -37,7 +37,8 @@ firstAnalysis_df = firstAnalysis_df.sort_values(by='LocationDesc')
 firstAnalysis_df.set_index('LocationDesc',inplace=True)
 
 states_list=firstAnalysis_df.index.values.tolist() #creats a dictionary of all the states/abbr for later use of order
-print('this is a list of the states', states_list)
+for v in states_list:
+    print('{0}'.format(v))
 
 #compares rates of alcohol use among youth in any two of the 50 states that the user chooses.
 def compare_any50():
@@ -274,6 +275,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 
