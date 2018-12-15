@@ -32,7 +32,8 @@ firstAnalysis_df = firstAnalysis_df.sort_values(by='LocationDesc')
 # sets LocationDesc, the state names, as index
 firstAnalysis_df.set_index('LocationDesc', inplace=True)
 
-states_list = firstAnalysis_df.index.values.tolist()  # creats a dictionary of all the states/abbr for later use of order
+states_list = firstAnalysis_df.index.values.tolist()  # creats a dictionary of all the states/abbr for later use of
+# order
 for v in states_list:
     print('{0}'.format(v))
 
@@ -131,7 +132,7 @@ def compare_any50asthma():
     any_stateslist = []  # list for states that the user chooses, up to 5
 
     while len(any_stateslist) <= 4:
-        any_state = input('Please enter a valid U.S. state. Use correct capitalization.')
+        any_state = input('Please enter a valid U.S. state. Use correct capitalization:')
         if any_state in states_list:
             any_stateslist.append(any_state)
         elif any_state == 'done':
@@ -161,8 +162,8 @@ def compare_any50asthma():
 
 # compare_any50asthma()
 
-# This code allows user to input one state and get the male, female, and overall asthma prevalence compared side by side
-# in a graph
+# This code allows user to input one state and get the male, female, and overall asthma prevalence compared side by
+# side in a graph
 # This function was made by Michael
 def compare_genderasthma():
     print('Select one state in which you would like to see male, female, and overall percent prevalence of \n'
