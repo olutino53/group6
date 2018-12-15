@@ -36,6 +36,7 @@ states_list=firstAnalysis_df.index.values.tolist() #creats a dictionary of all t
 for v in states_list:
     print('{0}'.format(v))
 #compares rates of alcohol use among youth in any two of the 50 states that the user chooses.
+#This function was made by Emmanuel
 def compare_any50():
     print('Select two states to compare their rates at which alcohol is used among youth. Please use correct capitalization.')
     ## a test code can be written for user that input an invalid state.
@@ -112,6 +113,7 @@ male_asthma_df = secondcode_df[secondcode_df.StratificationID1 == 'GENM'] #chang
 #no alaska, no virginia
 
 #this function allows the user to input up to 5 different states of their choosing and compare overall asthma rates of each state
+#This function was made by Rohan
 def compare_any50asthma():
     print("Compare up to five different states' overall asthma rates for 2015. If less than 5,\n"
           "type 'done' when you have entered all the states you wish to investigate. You must enter at least one state.")
@@ -147,6 +149,7 @@ def compare_any50asthma():
 #compare_any50asthma()
 
 #This code allows user to input one state and get the male, female, and overall asthma prevalence compared side by side in a graph
+#This function was made by Michael
 def compare_genderasthma():
     print('Select one state in which you would like to see male, female, and overall percent prevalence of \n'
           'asthma among adults in 2015. Use correct capitalization. Note: There is no comparison data for'
@@ -176,6 +179,7 @@ def compare_genderasthma():
     print('\n')
 #compare_genderasthma()
 
+#This function was made by Ayomide Akinkuade
 def Aqi():
     #importing AQI data per state capital - air quality Index(AQI)
     #Load the AQI CSV file into a dataframe
