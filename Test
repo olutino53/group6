@@ -1,0 +1,32 @@
+import unittest
+import final                    #name of py file read from
+
+
+class TestStates(unittest.TestCase):
+
+    def test_compare_any50(self):                  # Checks to see if this states exists
+
+        self.assertTrue(final.compare_any50, 'Alabama')
+        self.assertTrue(final.compare_any50, 'New York')
+        self.assertTrue(final.compare_any50, 'Oregon')
+
+    def test_compare_any50asthma(self):             # Checks to see if this states exists
+
+        self.assertTrue(final.compare_any50asthma, 'Virginia')
+        self.assertTrue(final.compare_any50asthma, 'Washington')
+        self.assertTrue(final.compare_any50asthma, 'Wyoming')
+
+    def test_compare_genderasthma(self):            # Checks to see if this states exists
+
+        self.assertTrue(final.compare_genderasthma, 'Alabama')
+        self.assertTrue(final.compare_genderasthma, 'Alaska')
+        self.assertTrue(final.compare_genderasthma, 'Colorado')
+
+    def test_Aqi(self):                             # Checks to see if the file is a csv
+
+        with self.assertRaises(expected_exception=Exception):
+            final.Aqi('.csv', 'csv')
+
+
+if __name__ == '__main__':
+        unittest.main()
